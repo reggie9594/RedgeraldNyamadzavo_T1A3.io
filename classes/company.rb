@@ -5,4 +5,17 @@ class Company
   def initialize
     @name = "Reggie's Company"
   end
+  
+  def add_payrate(payrate)
+    @payrates << payrate
+    return self
+  end
+
+  def select_payrate
+    menu = []
+    @payrates.each {|payrate| menu.push(payrate.type)}
+
+    selection = TTY::Prompt.new.select("Choose a payrate:", menu, cycle: true, marker: '>', echo: false)
+        @payrates.each { |payrate| return payrate if payrate.type == selection }
+  end
 end
