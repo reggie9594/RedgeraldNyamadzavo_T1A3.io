@@ -1,6 +1,8 @@
 require 'tty-prompt'
 require_relative './classes/staff'
 require_relative './classes/payrates'
+require_relative './classes/company'
+require_relative './classes/timesheet'
 
 company = Company.new.add_payrate(Casual.new).add_payrate(Parttime.new).add_payrate(Fulltime.new)   # creates organisation and sets default payrates
 
