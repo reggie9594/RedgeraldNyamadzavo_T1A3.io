@@ -99,7 +99,26 @@ while true   #menu
         end
 
       when 3
+      	clear
+        puts "Add Staff Timesheet"           # adding the newly onboarded staff timesheet
+        puts "\n\n\n\n\n"
+        # puts $payrate
+        if $staff1
+          $timesheetdays = $payrate.select_days
 
+          $staff1.timesheet = Timesheet.new($payrate, $timesheetdays)
+          # staff_timesheet = Timesheet.new($payrate, timesheetdays)
+
+          puts "Thank you"
+
+          $staff1.timesheet.display_timesheet($staff1, company)
+          back_main_menu
+        else
+          clear
+          puts "Please add a Staff Member First"
+          puts "\n\n\n\n\n"
+          back_main_menu
+        end
       when 4
        
 
