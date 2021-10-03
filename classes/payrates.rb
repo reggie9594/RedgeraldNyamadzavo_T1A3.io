@@ -11,3 +11,9 @@ class Payrate
     puts "Payrate: #{@type}"
   end
 end
+
+class Casual < Payrate
+  def initialize
+    super("Casual")
+  end
+end
