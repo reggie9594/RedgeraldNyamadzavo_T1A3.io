@@ -6,4 +6,8 @@ class Payrate
   def initialize(type)
     @type = type
   end
+
+  def display_payrate
+    puts "Payrate: #{@type}"
+  end
 end
