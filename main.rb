@@ -1,17 +1,5 @@
 require 'tty-prompt'
-
-class Staff
-     attr_accessor :full_name, :dob
-     def initialize(full_name, dob)
-          @full_name = full_name
-          @dob = dob
-     end
-
-     def display_details()
-        puts "Staff Name: #@full_name"
-        puts "Staff DoB: #@dob"
-     end
-end
+require_relative './classes/staff'
 
 q1 = "Enter Full Name"
 q2 = "Enter Date of birth"
@@ -30,7 +18,7 @@ def run_onboarding(staff_details)
   end
   staff1 = Staff.new(staff_array[0], staff_array[1])
   staff1.display_details()
-  # puts "Staff Details:"+full_name
+  puts "Staff Details:"+full_name
 end
 
 run_onboarding(staff_details)
