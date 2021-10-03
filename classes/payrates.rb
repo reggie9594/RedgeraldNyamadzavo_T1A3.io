@@ -10,6 +10,29 @@ class Payrate
   def display_payrate
     puts "Payrate: #{@type}"
   end
+  
+  def select_days
+    days_menu = []
+    days_selected = []
+    select_days_menu(days_menu)
+    select_days_selection(days_selected, days_menu)
+    return days_selected
+  end
+
+
+  def select_days_menu(days_menu)
+    @days.each do |day, status|
+      days_menu.push(name: day.to_s)
+    end
+  end
+
+
+  def select_days_selection(days_selected, days_menu)
+      TTY::Prompt.new.multi_select("Please select your days worked:", days_menu, cycle: true, marker: '>', echo: false, per_page: 7).each do |day|
+
+          days_selected.push(day)
+      end
+  end
 end
 
 class Casual < Payrate
