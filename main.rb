@@ -4,6 +4,33 @@ require_relative './classes/payrates'
 
 company = Company.new.add_payrate(Casual.new).add_payrate(Parttime.new).add_payrate(Fulltime.new)   # creates organisation and sets default payrates
 
+
+def start_text  # txt displayed on the menu
+  puts "#######################################################"
+  puts "##                                                   ##"
+  puts "##                                                   ##"
+  puts "##             Welcome To Onboard Logic              ##"
+  puts "##   Simple, paperless onboarding for new employees  ##"
+  puts "##                                                   ##"
+  puts "##                                                   ##"
+  puts "#######################################################"
+end
+
+def clear  # clears the screen
+    puts "\e[2J\e[f"
+end
+
+def back_main_menu   # takes back to home screen
+    puts "\n\n Press any key to go back to the main menu"
+    $stdin.getch
+    clear
+    start_text
+end
+
+clear      # ckearing screen
+start_text   # adding start txt
+
+
 q1 = "Enter Full Name"
 q2 = "Enter Date of birth"
 q3 = "Enter Payrate Type"
