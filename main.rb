@@ -1,11 +1,13 @@
-require 'tty-prompt'
-require_relative './classes/staff'
-require_relative './classes/payrates'
-require_relative './classes/company'
-require_relative './classes/timesheet'
+require 'tty-prompt' # for termianl app to have options for menu and select options whilst in the app
+require_relative './classes/staff'  # define satff  class
+require_relative './classes/payrates' # define staff  pay rate
+require_relative './classes/company'  # define company, staff has to be onboarded to company database
+require_relative './classes/timesheet' # define staff timesheet
 
 company = Company.new.add_payrate(Casual.new).add_payrate(Parttime.new).add_payrate(Fulltime.new)   # creates organisation and sets default payrates
 
+# $staff1=''
+# $payrate = ''
 
 def start_text  # txt displayed on the menu
   puts "#######################################################"
@@ -32,6 +34,8 @@ end
 clear      # ckearing screen
 start_text   # adding start txt
 
+
+# run_onboarding(staff_details)
 
 while true   #menu
   selection = TTY::Prompt.new.select("Select any:",  cycle: true, marker: '>', echo: false) do |menu|
@@ -98,8 +102,9 @@ while true   #menu
           back_main_menu
         end
 
+
       when 3
-      	clear
+        clear
         puts "Add Staff Timesheet"           # adding the newly onboarded staff timesheet
         puts "\n\n\n\n\n"
         # puts $payrate
@@ -112,6 +117,10 @@ while true   #menu
           puts "Thank you"
 
           $staff1.timesheet.display_timesheet($staff1, company)
+          # payrate = company.select_payrate
+          # puts payrate
+          # payrate.display_payrate
+          # timesheetdays = payrate.select_days
           back_main_menu
         else
           clear
@@ -119,28 +128,36 @@ while true   #menu
           puts "\n\n\n\n\n"
           back_main_menu
         end
+
+
+
+
       when 4
-         clear
-	        if $staff1
-	          puts "view timesheet here"             # view staff timesheet
-	          puts "\n\n\n\n\n"
+        clear
+        if $staff1
+          puts "view timesheet here"             # view staff timesheet
+          puts "\n\n\n\n\n"
 
-	          if $timesheetdays
-	            $staff1.timesheet.display_timesheet($staff1, company)
-	            back_main_menu
-	          else
-	            puts "Please Add a Timesheet First"
-	            back_main_menu
+          if $timesheetdays
+            $staff1.timesheet.display_timesheet($staff1, company)
+            back_main_menu
+          else
+            puts "Please Add a Timesheet First"
+            back_main_menu
 
-	          end
+          end
 
-	        else
-	          puts "Please Add a Staff Member First"
-	          back_main_menu
-	        end
+        else
+          puts "Please Add a Staff Member First"
+          back_main_menu
+        end
+
 
       when 5
-        
+        clear
+        payrate = company.select_payrate
+        payrate.display_payrate
+        back_main_menu
       when 6
         clear
         puts "#######################################################"
