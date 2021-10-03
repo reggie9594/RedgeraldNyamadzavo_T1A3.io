@@ -4,8 +4,9 @@ class Company
   attr_reader :name, :payrates
   def initialize
     @name = "Reggie's Company"
+    @payrates = []
   end
-  
+
   def add_payrate(payrate)
     @payrates << payrate
     return self
