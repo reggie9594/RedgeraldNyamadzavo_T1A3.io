@@ -2,6 +2,8 @@ require 'tty-prompt'
 require_relative './classes/staff'
 require_relative './classes/payrates'
 
+company = Company.new.add_payrate(Casual.new).add_payrate(Parttime.new).add_payrate(Fulltime.new)   # creates organisation and sets default payrates
+
 q1 = "Enter Full Name"
 q2 = "Enter Date of birth"
 q3 = "Enter Payrate Type"
@@ -28,8 +30,13 @@ run_onboarding(staff_details)
 
 while true   #menu
   selection = TTY::Prompt.new.select("Select any:",  cycle: true, marker: '>', echo: false) do |menu|
-      menu.choice('Trial', 1)
-      menu.choice('View Payrates', 2)
+      menu.choice('Create Staff', 1)
+      menu.choice('View Staff', 2)
+      menu.choice('Create Timesheet', 3)
+      menu.choice('View Timesheet', 4)
+      menu.choice('View Payrates', 5)
+      menu.choice('Help', 6)
+      menu.choice('Exit', 7)
 
 
       case selection
