@@ -1,16 +1,19 @@
 require 'tty-prompt'
 
 class Payrate
-  attr_reader :type
+  attr_reader :type, :rate, :days
 
-  def initialize(type)
+  def initialize(type, rate, days)
     @type = type
+    @rate = rate
+    @days = days
   end
 
   def display_payrate
     puts "Payrate: #{@type}"
+    puts "Rate per hour: $#{@rate}"
   end
-  
+
   def select_days
     days_menu = []
     days_selected = []
@@ -32,12 +35,6 @@ class Payrate
 
           days_selected.push(day)
       end
-  end
-end
-
-class Casual < Payrate
-  def initialize
-    super("Casual")
   end
 end
 
