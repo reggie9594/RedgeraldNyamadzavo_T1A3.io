@@ -1,5 +1,6 @@
 require 'tty-prompt'
 require_relative './classes/staff'
+require_relative './classes/payrates'
 
 q1 = "Enter Full Name"
 q2 = "Enter Date of birth"
@@ -28,7 +29,7 @@ run_onboarding(staff_details)
 while true   #menu
   selection = TTY::Prompt.new.select("Select any:",  cycle: true, marker: '>', echo: false) do |menu|
       menu.choice('Trial', 1)
-      menu.choice('test', 2)
+      menu.choice('View Payrates', 2)
 
 
       case selection
@@ -37,7 +38,7 @@ while true   #menu
       	puts "trial"
 
       when 2
-      	puts "test"
+      	payrate.display_payrate
       end
     end
 end
