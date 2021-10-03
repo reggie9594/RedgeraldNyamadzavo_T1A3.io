@@ -1,3 +1,4 @@
+require 'tty-prompt'
 class Staff
      attr_accessor :full_name, :dob, :payrate
      def initialize(full_name, dob, payrate)

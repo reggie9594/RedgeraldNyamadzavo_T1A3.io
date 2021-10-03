@@ -23,3 +23,21 @@ def run_onboarding(staff_details)
 end
 
 run_onboarding(staff_details)
+
+
+while true   #menu
+  selection = TTY::Prompt.new.select("Select any:",  cycle: true, marker: '>', echo: false) do |menu|
+      menu.choice('Trial', 1)
+      menu.choice('test', 2)
+
+
+      case selection
+
+      when 1   
+      	puts "trial"
+
+      when 2
+      	puts "test"
+      end
+    end
+end
