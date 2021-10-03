@@ -120,7 +120,24 @@ while true   #menu
           back_main_menu
         end
       when 4
-       
+         clear
+	        if $staff1
+	          puts "view timesheet here"             # view staff timesheet
+	          puts "\n\n\n\n\n"
+
+	          if $timesheetdays
+	            $staff1.timesheet.display_timesheet($staff1, company)
+	            back_main_menu
+	          else
+	            puts "Please Add a Timesheet First"
+	            back_main_menu
+
+	          end
+
+	        else
+	          puts "Please Add a Staff Member First"
+	          back_main_menu
+	        end
 
       when 5
         
